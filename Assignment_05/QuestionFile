@@ -1,0 +1,5 @@
+Question1: Design an algorithm and  implement it using a program to find which alphabet has maximum number of occurrences and print it. 
+Question2: . Given an unsorted array of integers, design an algorithm and implement it using a program to find whether two elements exist
+             such that their sum is equal to the given key element. 
+Question3: You have been given two sorted integer arrays of size m and n. Design an algorithm and implement it using a program to find 
+            list of elements which are common to both. 
