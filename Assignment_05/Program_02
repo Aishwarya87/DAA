@@ -1,0 +1,19 @@
+for test in range(int(input())):
+    n= int(input())
+    arr = list(map(int,input().split()))
+    key = int(input())
+    arr.sort() #10 12 24 28 38 40 64 72 84 97
+    count1,count2=0,n-1
+    low = arr[count1]
+    high = arr[count2]
+    while(count1<n-1 and count2>0):  #count1=14 count2=0
+        if low+high==key:
+            print(low,high)
+            exit()
+        elif low+high<key:
+            count1+=1
+            low=arr[count1]
+        else:
+            count2-=1
+            high=arr[count2]
+    print("No such elements exist")
