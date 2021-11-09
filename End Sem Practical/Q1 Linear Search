@@ -1,0 +1,18 @@
+t= int(input())
+for _ in range(t):
+    n =int(input())
+    flag=0
+    arr= list(map(int,input().split()))
+    comparisons=0
+    key = int(input())
+    for ele in arr:
+        if key!=ele:
+            comparisons+=1
+        else:
+            print("Present ",comparisons+1)
+            flag=1
+            break
+    if flag==0:
+        print("Not Present",n)
+        
+        
