@@ -1,0 +1,26 @@
+import math
+t= int(input())
+for _ in range(t):
+    n= int(input())
+    arr= list(map(int,input().split()))
+    swaps,comparisons=0,0
+    for i in range(1, len(arr)):
+
+        key = arr[i]
+
+        # Move elements of arr[0..i-1], that are
+        # greater than key, to one position ahead
+        # of their current position
+        j = i - 1
+        while j >= 0 and key < arr[j]:
+            comparisons+=1
+            arr[j + 1] = arr[j]
+            swaps+=1
+            j -= 1
+        arr[j + 1] = key
+        swaps+=1
+    print(*arr)
+    print("comparisons= ",comparisons)
+    print("shifts= ",swaps)
+
+
