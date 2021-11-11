@@ -1,0 +1,22 @@
+import math
+t= int(input())
+for _ in range(t):
+    n= int(input())
+    arr= list(map(int,input().split()))
+    diff= int(input())
+    arr.sort()
+    left=0
+    right=1
+    count=0
+    while(right<n):
+        if arr[right]-arr[left]==diff:
+            count+=1
+            left+=1
+            right+=1
+        elif arr[right]-arr[left]>diff:
+            left+=1
+        else:
+            right+=1
+    print(count)
+    
+    
