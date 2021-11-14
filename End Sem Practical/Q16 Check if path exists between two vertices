@@ -1,0 +1,31 @@
+from collections import defaultdict,deque
+
+def bfs(graph,src,dst):
+    visited = set()
+    q = deque()
+    q.append(src) #0
+    visited.add(src)
+    while q:
+        popped = q.popleft()
+        for i in graph[popped]:
+            if i == dst:
+                return True
+            if i not in visited:
+                visited.add(i)
+                q.append(i)
+    return False
+
+a= []
+for i in range(int(input())):
+    a.append(list(map(int, input().split())))
+graph = defaultdict(list)
+for i in range(len(a)):
+    for j in range(len(a[i])):
+        if a[i][j]== 1:
+            graph[i].append(j)
+print(graph)
+src, dst = map(int, input().strip().split())
+res = bfs(graph, src-1, dst-1)
+if res: print("Yes, Path Exists")
+else: print ("No path doesn't exist")
+
