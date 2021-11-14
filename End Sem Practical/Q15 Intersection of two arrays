@@ -1,0 +1,27 @@
+def findCommon(arr1,arr2,n1,n2):
+    common=[]
+    d1={}
+
+    d2={}
+    for i in arr1:
+        d1[i]= d1.get(i,0) +1
+    for i in arr2:
+        d2[i]= d2.get(i,0) +1
+
+    for k,v in d2.items():
+        if k in d1:
+            if v==d1[k] and v>1:
+                #common.append(k) * v
+                common += v * [k]
+            else :
+                common.append(k)
+    return common
+
+n1= int(input())
+arr1= list(map(int,input().split()))
+n2= int(input())
+arr2= list(map(int,input().split()))
+common= findCommon(arr1,arr2,n1,n2)
+print(*common)
+
+
