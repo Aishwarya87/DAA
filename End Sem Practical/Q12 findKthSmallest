@@ -1,0 +1,24 @@
+def findKthSmallest(arr,k):
+    #average case time complexity: n+n/2+n/4+..= 2(n)= O(n)
+    k=k-1
+    def quickSelect(l,r):
+        pivot,p= arr[r],l
+        for i in range(l,r):
+            if arr[i]<=pivot:
+                arr[p],arr[i]=arr[i],arr[p]
+                p+=1
+        arr[p],arr[r]=pivot,arr[p]
+        if p>k: return quickSelect(l,p-1)
+        elif p<k:return quickSelect(p+1,r)
+        else: return arr[p]
+    print(quickSelect(0,len(arr)-1))
+t= int(input())
+for _ in range(t):
+    n= int(input())
+
+    arr= list(map(int,input().split()))
+    k=int(input())
+    arr=list(set(arr))
+    findKthSmallest(arr,k)
+    
+    
