@@ -1,0 +1,24 @@
+def findSum(arr,n,k):
+    i,j=0,n-1
+    while(i<j):
+        if arr[i]+arr[j]==k:
+            lst=[]
+            lst.append(arr[i])
+            lst.append(arr[j])
+            return lst
+        elif arr[i]+arr[j]>k:
+            j-=1
+        else:
+            i+=1
+t= int(input())
+for _ in range(t):
+    n= int(input())
+    arr= list(map(int,input().split()))
+    k=int(input())
+    arr.sort()
+    lst= findSum(arr,n,k)
+    if not lst: print("No such pair exists")
+    else: print(*(findSum(arr,n,k)))
+    
+ 
+ Time complexity: O(nlogn)
