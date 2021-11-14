@@ -1,0 +1,24 @@
+def duplicateSearch(arr):
+    d={}
+    for ele in arr:
+        d[ele] = d.get(ele, 0) + 1
+
+    max_freq=1
+    for k, v in d.items():
+        if max_freq < v:
+            max_freq = v
+            res = k
+    if max_freq==1: print("No duplicates found")
+    else:
+        print(res,"-",max_freq)
+
+t= int(input())
+for _ in range(t):
+    n= int(input())
+
+    arr= list(input().split())
+
+
+    duplicateSearch(arr)
+    
+    
