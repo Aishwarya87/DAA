@@ -1,0 +1,67 @@
+from collections import defaultdict,deque
+def isBipartite(graph):
+    col = [-1] * (len(graph))
+
+    # queue for BFS storing {vertex , colour}
+    q = []
+
+    # loop incase graph is not connected
+    for i in range(len(graph)):
+
+        # if not coloured
+        if (col[i] == -1):
+
+            # colouring with 0 i.e. red
+            q.append([i, 0])
+            col[i] = 0
+
+            while len(q) != 0:
+                p = q[0]
+                q.pop(0)
+
+                # current vertex
+                v = p[0]
+
+                # colour of current vertex
+                c = p[1]
+
+                # traversing vertexes connected to current vertex
+                for j in graph[v]:
+
+                    # if already coloured with parent vertex color
+                    # then bipartite graph is not possible
+                    if (col[j] == c):
+                        return False
+
+                    # if uncooloured
+                    if (col[j] == -1):
+
+                        # colouring with opposite color to that of parent
+                        if c == 1:
+                            col[j] = 0
+                        else:
+                            col[j] = 1
+                        q.append([j, col[j]])
+
+    # if all vertexes are coloured such that
+    # no two connected vertex have same colours
+    return True
+
+
+a=[]
+for i in range(int(input())):
+    a.append(list(map(int, input().split())))
+graph = defaultdict(list)
+for i in range(len(a)):
+    for j in range(len(a[i])):
+        if a[i][j]== 1:
+            graph[i].append(j)
+print(graph)
+
+res = isBipartite(graph)
+if res: print("Yes, Bipartite")
+else: print ("No not bipartite")
+
+
+
+
