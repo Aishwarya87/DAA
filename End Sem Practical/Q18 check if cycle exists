@@ -1,0 +1,37 @@
+from collections import defaultdict,deque
+def cyclic(graph,n):
+    visited=[False] * n
+    recStack=[False] * n
+    for v in graph:
+        if ifCycleExists(v,recStack,visited):
+            return True
+    return False
+def ifCycleExists(index,recStack,visited):
+    if recStack[index]:
+        return True
+    if visited[index]:
+        return False
+    visited[index]= True
+    recStack[index]= True
+    for neighbor in graph[index]:
+        if ifCycleExists(neighbor,recStack,visited):
+            return True
+    recStack[index]= False
+    return False
+
+a=[]
+n= int(input())
+for i in range(n):
+    a.append(list(map(int, input().split())))
+graph = defaultdict(list)
+for i in range(len(a)):
+    for j in range(len(a[i])):
+        if a[i][j]== 1:
+            graph[i].append(j)
+print(graph)
+
+res = cyclic(list(graph),n)
+if res: print("Yes, cycle exists")
+else: print ("No there is no cycle")
+
+
